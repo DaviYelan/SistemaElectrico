@@ -44,3 +44,8 @@ def eliminacionElectrodomestico(request, codigo):
     messages.success(request, 'Electrodomestico eliminado')
 
     return redirect('/')
+
+
+
+def colaboradores(request):
+    return render(request, 'colaborador.html')
