@@ -10,6 +10,10 @@ class Electrodomestico(models.Model):
     def __str__(self):
         texto = "{0} ({1})"
         return texto.format(self.nombre, self.consumo)
+    
+    class Meta:
+
+        app_label = 'loginbeta'
 
 
 
@@ -69,40 +73,6 @@ class Casa(models.Model):
     tamaño = models.CharField(max_length=255)
 
     def obtenerConsumo(self):
-        return 0.0
-
-class FuenteEnergiaExterna(models.Model):
-    tipo = models.CharField(max_length=255)
-    capacidad = models.FloatField()
-
-    def generarElectricidad(self):
-        return 0.0
-
-    def evaluarEficiencia(self):
-        return 0.0
-
-class Generador(FuenteEnergiaExterna):
-    cantidad = models.FloatField()
-
-    def evaluarAhorro(self):
-        return 0.0
-
-class PanelSolar(FuenteEnergiaExterna):
-    cantidad = models.FloatField()
-
-    def obtenerGeneracion(self):
-        return 0.0
-
-class Sensor(FuenteEnergiaExterna):
-    cantidad = models.FloatField()
-
-    def evaluarAhorro(self):
-        return 0.0
-
-class Eolico(FuenteEnergiaExterna):
-    cantidad = models.FloatField()
-
-    def obtenerGeneracion(self):
         return 0.0
 
 class CalculadoraCosto(Medidor):

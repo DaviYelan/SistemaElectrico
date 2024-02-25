@@ -9,7 +9,6 @@ def home(request):
     messages.success(request, 'Electrodomestico listado')
     return render(request, "gestionElectrodomesticos.html", {'electrodomesticos': electrodomesticos})
 
-
 def registrarElectrodomestico(request):
     codigo=request.POST['txtCodigo']
     nombre=request.POST['txtNombre']
@@ -49,3 +48,28 @@ def eliminacionElectrodomestico(request, codigo):
 
 def colaboradores(request):
     return render(request, 'colaborador.html')
+
+def plantilla(request):
+    return render(request, 'principal.html') 
+
+def acercas(request):
+    return render(request, 'acerca.html')
+
+def electros(request):
+    return render(request, 'electro.html')
+
+def infos(request):
+    return render(request, 'info.html')
+
+def electrosingles(request):
+    return render(request, 'electro-single.html')
+
+def teslas(request):
+    return render(request, 'tesla.html')
+
+def sesions(request):
+    return render(request, 'sesion.html')
+
+def electrodomesticos(request):
+    electrodomesticos = Electrodomestico.objects.all()
+    return render(request, 'electro.html', {'electrodomesticos': electrodomesticos})
