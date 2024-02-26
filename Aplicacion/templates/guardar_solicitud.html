@@ -1,0 +1,42 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Electrodoméstico - TeslaCinco</title>
+    <!-- Coloca aquí tus enlaces a estilos CSS si los tienes -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Coloca aquí tu barra de navegación si la tienes -->
+
+    <section class="container py-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center mb-4">Solicitar Electrodoméstico</h2>
+                <form action="{% url 'guardar_solicitud' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre del electrodoméstico:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción:</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                    </div>
+                    <!-- Puedes agregar más campos según tus necesidades, como especificaciones, cantidad, etc. -->
+
+                    <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coloca aquí tu pie de página u otros elementos comunes si los tienes -->
+
+    <!-- Coloca aquí tus scripts JavaScript si los tienes -->
+    <script src="script.js"></script>
+</body>
+
+</html>

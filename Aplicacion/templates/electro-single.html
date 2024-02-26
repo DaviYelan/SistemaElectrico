@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TeslaCinco</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="../static/assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/templatemo.css">
+    <link rel="stylesheet" href="../static/assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="../static/assets/css/fontawesome.min.css">
+
+    <!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/slick-theme.css">
+</head>
+
+<body>
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none"
+                        href="https://github.com/DaviYelan/SistemaElectrico">info@teslacinco.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">09999999999</a>
+                </div>
+                <div>
+                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i
+                            class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i
+                            class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/" target="_blank"><i
+                            class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i
+                            class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="{% url 'principal' %}">
+                TeslaCinco
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+                id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'principal' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'solicitar' %}">Solicitar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'electrodomesticos' %}">Electrodomésticos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'infos' %}">Sobre nosotros</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                            <div class="input-group-text">
+                                <i class="fa fa-fw fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
+                        data-bs-target="#templatemo_search">
+                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                    </a>
+
+                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'carrito' %}">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"
+                            id="cart-counter">{{ cantidad_en_carrito }}</span>
+                    </a>
+
+                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'sesions' %}">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Open Content -->
+    <section class="bg-light">
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-lg-5 mt-5">
+                    <div class="card mb-3">
+                        <img class="card-img img-fluid" src="../static/assets/img/product_single_10.jpg"
+                            alt="Card image cap" id="product-detail">
+                    </div>
+                </div>
+                <!-- col end -->
+                <div class="col-lg-7 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="h2">{{ electrodomestico.nombre }}</h1>
+                            <p class="py-2">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-secondary"></i>
+                                <span class="list-inline-item text-dark">{{ electrodomestico.categoria }}</span>
+                            </p>
+
+                            <h6>Descripcion:</h6>
+                            <p>{{ electrodomestico.descripcion }}</p>
+
+                            <h6>Especificaciones</h6>
+                            <ul class="list-unstyled pb-3">
+                                <li>Gasta {{ electrodomestico.consumo }} Kw</li>
+                            </ul>
+
+                            <form id="agregar-al-carrito-form" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="product-title" value="{{ electrodomestico.nombre }}">
+                                <input type="hidden" name="product-quanity" value="1">
+                                <input type="hidden" name="product-id" value="{{ electrodomestico.id }}">
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <ul class="list-inline pb-3">
+                                            <li class="list-inline-item text-right">
+                                                Cantidad
+                                            </li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                                            <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row pb-3">
+                                    <div class="col d-grid">
+                                        <button type="button" class="btn btn-success btn-lg" id="btn-agregar-carrito">Agregar al carrito</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Close Content -->
+
+    <script>
+        document.getElementById("btn-agregar-carrito").addEventListener("click", function() {
+            var formData = new FormData(document.getElementById("agregar-al-carrito-form"));
+
+            fetch("/agregar-al-carrito/", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert("El producto se agregó al carrito exitosamente.");
+                        var cartCounter = document.getElementById("cart-counter");
+                        var currentCount = parseInt(cartCounter.innerText);
+                        cartCounter.innerText = currentCount + 1;
+                    } else {
+                        alert("Error al agregar el producto al carrito.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        });
+    </script>
+
+    <!-- Start Script -->
+    <script src="../static/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="../static/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/assets/js/templatemo.js"></script>
+    <script src="../static/assets/js/custom.js"></script>
+    <!-- End Script -->
+
+    <!-- Start Slider Script -->
+    <script src="../static/assets/js/slick.min.js"></script>
+    <script>
+        $('#carousel-related-product').slick({
+            infinite: true,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                }
+            ]
+        });
+    </script>
+    <!-- End Slider Script -->
+
+    <!-- Nuevo Script JavaScript -->
+
+    <script>
+        var cartIcon = document.getElementById("cart-icon");
+        var cartItems = document.getElementById("cart-items");
+
+        cartIcon.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            fetch("/obtener-elementos-carrito/")
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error("Error al obtener los elementos del carrito.");
+                    }
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        });
+    </script>
+
+
+    <!-- Fin del Nuevo Script JavaScript -->
+
+</body>
+
+</html>
