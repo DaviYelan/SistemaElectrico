@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TeslaCinco</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="../static/assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assets/css/templatemo.css">
+    <link rel="stylesheet" href="../static/assets/css/custom.css">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="../static/assets/css/fontawesome.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+<body>
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <a class="text-light" href="https://github.com/DaviYelan/SistemaElectrico" target="_blank"
+                        rel="sponsored"><i class="fa fa-envelope mx-2"></i>info@teslacinco.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="#">09999999999</a>
+                </div>
+                <div>
+                    <a class="text-light" href="https://www.facebook.com/smateo.fabian?mibextid=ZbWKwL" target="_blank"
+                        rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/smateo.silva?igsh=MWM5emtxMzF5bHhiNw=="
+                        target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/" target="_blank"><i
+                            class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i
+                            class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand text-success logo h1 align-self-center" href="{% url 'principal' %}">
+                TeslaCinco
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+                id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'principal' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'solicitar' %}">Solicitar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'electrodomesticos' %}">Electrodomésticos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'infos' %}">Sobre nosotros</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                            <div class="input-group-text">
+                                <i class="fa fa-fw fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
+                        data-bs-target="#templatemo_search">
+                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                    </a>
+
+                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'carrito' %}">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
+                    </a>
+
+                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'perfiles' %}">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a>
+
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Start Calculo -->
+    <section class="container py-5">
+        <h1>Calculadora de Gasto Energético</h1>
+
+        <label for="consumo">Ingresa el consumo en kilovatios:</label>
+        <input type="number" id="consumo" name="consumo" step="0.01">
+
+        <button onclick="calcularGasto()">Calcular</button>
+
+        <h2>Resultados</h2>
+        <div id="resultados"></div>
+        <canvas id="myChart" width="300" height="200"></canvas>
+
+        <script>
+            function calcularGasto() {
+                var kilovatios = parseFloat(document.getElementById('consumo').value);
+                var panelesSolares = parseInt(prompt("Ingresa el número de paneles solares:"));
+                var panelesEolicos = parseInt(prompt("Ingresa el número de generadores eólicos:"));
+
+                if (isNaN(kilovatios) || isNaN(panelesSolares) || isNaN(panelesEolicos)) {
+                    alert("Ingresa valores numéricos válidos.");
+                    return;
+                }
+
+                fetch(`/api/calcular_descuento_energetico/?kilovatios=${kilovatios}&paneles_solares=${panelesSolares}&paneles_eolicos=${panelesEolicos}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        var descuento = data.descuento;
+                        var costo_por_kilovatio = 0.15;
+
+                        // Aplica el descuento al costo por kilovatio
+                        var costo_con_descuento = costo_por_kilovatio * (1 - descuento);
+
+                        // Lógica de cálculo del gasto energético y monetario 
+
+                        var horas_por_dia = 24;
+                        var dias_por_semana = 7;
+                        var dias_por_mes = 30;
+                        var dias_por_año = 365;
+
+                        var gasto_energetico_por_hora = kilovatios;
+                        var gasto_energetico_por_dia = gasto_energetico_por_hora * horas_por_dia;
+                        var gasto_energetico_por_semana = gasto_energetico_por_dia * dias_por_semana;
+                        var gasto_energetico_por_mes = gasto_energetico_por_dia * dias_por_mes;
+                        var gasto_energetico_por_año = gasto_energetico_por_dia * dias_por_año;
+
+                        var gasto_monetario_por_hora = gasto_energetico_por_hora * costo_por_kilovatio;
+                        var gasto_monetario_por_dia = gasto_energetico_por_dia * costo_por_kilovatio;
+                        var gasto_monetario_por_semana = gasto_energetico_por_semana * costo_por_kilovatio;
+                        var gasto_monetario_por_mes = gasto_energetico_por_mes * costo_por_kilovatio;
+                        var gasto_monetario_por_año = gasto_energetico_por_año * costo_por_kilovatio;
+
+                        var total_con_descuento_por_hora = gasto_energetico_por_hora * costo_con_descuento;
+                        var total_con_descuento_por_dia = gasto_energetico_por_dia * costo_con_descuento;
+                        var total_con_descuento_por_semana = gasto_energetico_por_semana * costo_con_descuento;
+                        var total_con_descuento_por_mes = gasto_energetico_por_mes * costo_con_descuento;
+                        var total_con_descuento_por_año = gasto_energetico_por_año * costo_con_descuento;
+
+                        // Actualiza los resultados en la página
+                        var resultadosDiv = document.getElementById('resultados');
+                        resultadosDiv.innerHTML = `
+                            <p>El gasto energético de ${kilovatios} kilovatios es:</p>
+                            <p>${gasto_energetico_por_hora} kilovatios por hora</p>
+                            <p>${gasto_energetico_por_dia} kilovatios por día</p>
+                            <p>${gasto_energetico_por_semana} kilovatios por semana</p>
+                            <p>${gasto_energetico_por_mes} kilovatios por mes</p>
+                            <p>${gasto_energetico_por_año} kilovatios por año</p>
+        
+                            <p>El gasto monetario de ${kilovatios} kilovatios es:</p>
+                            <p>$${gasto_monetario_por_hora.toFixed(2)} por hora</p>
+                            <p>$${gasto_monetario_por_dia.toFixed(2)} por día</p>
+                            <p>$${gasto_monetario_por_semana.toFixed(2)} por semana</p>
+                            <p>$${gasto_monetario_por_mes.toFixed(2)} por mes</p>
+                            <p>$${gasto_monetario_por_año.toFixed(2)} por año</p>
+        
+                            <p>El gasto con descuento de ${kilovatios} kilovatios es:</p>
+                            <p>${total_con_descuento_por_hora} kilovatios por hora</p>
+                            <p>${total_con_descuento_por_dia} kilovatios por día</p>
+                            <p>${total_con_descuento_por_semana} kilovatios por semana</p>
+                            <p>${total_con_descuento_por_mes} kilovatios por mes</p>
+                            <p>${total_con_descuento_por_año} kilovatios por año</p>
+                        `;
+
+                        // Datos para el gráfico de barras
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Por Hora', 'Por Día', 'Por Semana', 'Por Mes', 'Por Año'],
+                                datasets: [{
+                                    label: 'Consumo de energía sin fuente renovable (kilovatios por período)',
+                                    data: [gasto_energetico_por_hora, gasto_energetico_por_dia, gasto_energetico_por_semana, gasto_energetico_por_mes, gasto_energetico_por_año],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.5)',
+                                        'rgba(54, 162, 235, 0.5)',
+                                        'rgba(255, 206, 86, 0.5)',
+                                        'rgba(75, 192, 192, 0.5)',
+                                        'rgba(153, 102, 255, 0.5)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)'
+                                    ],
+                                    borderWidth: 1
+                                },
+                                {
+                                    label: 'Consumo de energía con fuente renovable (kilovatios por período)',
+                                    data: [total_con_descuento_por_hora, total_con_descuento_por_dia, total_con_descuento_por_semana, total_con_descuento_por_mes, total_con_descuento_por_año],
+                                    backgroundColor: [
+                                        'rgba(255, 159, 64, 0.5)',
+                                        'rgba(54, 162, 235, 0.5)',
+                                        'rgba(255, 206, 86, 0.5)',
+                                        'rgba(75, 192, 192, 0.5)',
+                                        'rgba(153, 102, 255, 0.5)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 159, 64, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    })
+                    .catch(error => console.error('Error al realizar la solicitud:', error));
+            }
+        </script>
+
+        
+
+    </section>
+    <!-- End Calculo -->
+
+    
+
+    <div class="w-100 bg-black py-3">
+        <div class="container">
+            <div class="row pt-2">
+                <div class="col-12">
+                    <p class="text-left text-light">
+                        Copyright &copy; 2024 TeslaCinco
+                        | Diseñado por <a rel="sponsored" href="https://cincotesla.github.io" target="_blank">Grupo5</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Script -->
+    <script src="../static/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="../static/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/assets/js/templatemo.js"></script>
+    <script src="../static/assets/js/custom.js"></script>
+    
+    <!-- End Script -->
+
+
+    
+</body>
+
+</html>

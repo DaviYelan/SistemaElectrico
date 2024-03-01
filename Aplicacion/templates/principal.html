@@ -32,9 +32,8 @@ https://templatemo.com/tm-559-zay-shop
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
                 <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none"
-                        href="https://github.com/DaviYelan/SistemaElectrico">info@teslacinco.com</a>
+                    <a class="text-light" href="https://github.com/DaviYelan/SistemaElectrico" target="_blank" rel="sponsored"><i
+                            class="fa fa-envelope mx-2"></i>info@teslacinco.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="#">09999999999</a>
                 </div>
@@ -118,7 +117,7 @@ https://templatemo.com/tm-559-zay-shop
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
                     </a>
                 
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'perfiles' %}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span
                             class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
@@ -174,7 +173,7 @@ https://templatemo.com/tm-559-zay-shop
                                     Con esta aplicación web buscamos que el usuario tenga un eficiente uso de la energía
                                     eléctrica mediante su correcta gestión de sus electrodomésticos.
                                     Para saber más del proyecto visitanos <a rel="sponsored" class="text-success"
-                                        href="https://templatemo.com" target="_blank">TeslaCinco</a> sitio web.
+                                        href="https://cincotesla.github.io" target="_blank">TeslaCinco</a> sitio web.
                                 </p>
                             </div>
                         </div>
@@ -258,17 +257,18 @@ https://templatemo.com/tm-559-zay-shop
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="../static/assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3">Dispositivos pequeños</h5>
-                <p class="text-center"><a class="btn btn-success">Mirar</a></p>
+                <p class="text-center"><a id="register-btn" href="{% url 'electrodomesticos' %}" class="btn btn-outline-success">Mirar</a></p>
+                
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="../static/assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Electrodomésticos medianos</h2>
-                <p class="text-center"><a class="btn btn-success">Mirar</a></p>
+                <p class="text-center"><a id="register-btn" href="{% url 'electrodomesticos' %}" class="btn btn-outline-success">Mirar</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="../static/assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Electrodomésticos grandes</h2>
-                <p class="text-center"><a class="btn btn-success">Mirar</a></p>
+                <p class="text-center"><a id="register-btn" href="{% url 'electrodomesticos' %}" class="btn btn-outline-success">Mirar</a></p>
             </div>
         </div>
     </section>

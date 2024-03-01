@@ -12,6 +12,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 INSTALLED_APPS = [
+    'jazzmin',
     'crispy_forms',
     'crispy_bootstrap5',
     'django.contrib.admin',
@@ -21,7 +22,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Aplicacion.apps.AplicacionConfig',
+    'social_django',
 ]
+
+#Jazzmin Settings
+JAZZMIN_SETTINGS = {
+    "site_title": "TeslaCinco",
+    "site_header": "TeslaCinco",
+    "site_brand": "Admin TeslaCinco",
+    "site_logo": "../static/assets/img/apple-icon.png",
+    "login_logo": "../static/assets/img/apple-icon.png",
+    "site_logo_classes": "img-circle",
+    "site_icon": "../static/assets/img/favicon.ico",
+    "welcome_sign": "Panel de Administración TeslaCinco",
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "slate",
+}
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -94,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -115,3 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+

@@ -17,6 +17,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="../static/assets/css/fontawesome.min.css">
+
 </head>
 
 <body>
@@ -31,10 +32,10 @@
                     <a class="navbar-sm-brand text-light text-decoration-none" href="#">09999999999</a>
                 </div>
                 <div>
-                    <a class="text-light" href="https://www.facebook.com/smateo.fabian?mibextid=ZbWKwL" target="_blank" rel="sponsored"><i
-                            class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/smateo.silva?igsh=MWM5emtxMzF5bHhiNw==" target="_blank"><i
-                            class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.facebook.com/smateo.fabian?mibextid=ZbWKwL" target="_blank"
+                        rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/smateo.silva?igsh=MWM5emtxMzF5bHhiNw=="
+                        target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://twitter.com/" target="_blank"><i
                             class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i
@@ -44,7 +45,6 @@
         </div>
     </nav>
     <!-- Close Top Nav -->
-
 
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
@@ -76,6 +76,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'infos' %}">Sobre nosotros</a>
                         </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Cerrar sesion</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Iniciar sesion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'registro'%}">Registrate</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -95,22 +107,68 @@
 
                     <a class="nav-icon position-relative text-decoration-none" href="{% url 'carrito' %}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
+                        <span
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
                     </a>
-                
+
                     <a class="nav-icon position-relative text-decoration-none" href="{% url 'perfiles' %}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span
                             class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
-
-                    
                 </div>
             </div>
 
         </div>
     </nav>
     <!-- Close Header -->
+
+    <!-- Profile Section -->
+    <section class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h3>Mi Perfil</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="profile-info">
+                            <p><strong>Nombre:</strong> {{ request.user.first_name }}</p>
+                            <p><strong>Apellido:</strong> {{ request.user.last_name }}</p>
+                            <p><strong>Correo electrónico:</strong> {{ request.user.email }}</p>
+                        </div>
+                        <div class="profile-actions">
+                            <a href="{% url 'cambiar_contraseña' %}" class="btn btn-success">Cambiar contraseña</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Profile Section -->
+    
+    <style>
+        .card {
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        .card-header {
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+        }
+    
+        .profile-info p {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+    
+        .profile-actions {
+            margin-top: 20px;
+        }
+    </style>
+
 
     <!-- Modal -->
     <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
@@ -129,57 +187,6 @@
             </form>
         </div>
     </div>
-
-    <!-- Start Carrito de Compras -->
-<section class="container py-5">
-    <div class="row text-center pt-3">
-        <div class="col-lg-12">
-            <h1 class="h1">Carrito de Medición Monetaria y Energética</h1>
-        </div>
-    </div>
-
-    <div class="row py-4">
-        <div class="col-lg-8 mx-auto">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Electrodoméstico</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Consumo eléctrico</th>
-                            <th scope="col">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cart-items">
-                        <!-- Aquí se mostrarán los elementos del carrito -->
-                        {% for electrodomestico in electrodomesticos_en_carrito %}
-                        <tr>
-                            <td>{{ electrodomestico.nombre }}</td>
-                            <td>{{ electrodomestico.precio }}</td>
-                            <td>{{ electrodomestico.consumo }}</td>
-                            <td>
-                                <a href="{% url 'eliminar_del_carrito' electrodomestico.codigo %}" class="btn btn-danger">Eliminar</a>
-                            </td>
-                            <td>
-                                <a href="{% url 'calculos' %}" class="btn btn-danger">Calcular</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <div class="row py-3">
-        <div class="col-lg-8 mx-auto">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a id="register-btn" href="{% url 'principal' %}" class="btn btn-outline-success">Regresar</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Carrito de Compras -->
 
     <!-- Start Script -->
     <script src="../static/assets/js/jquery-1.11.0.min.js"></script>
